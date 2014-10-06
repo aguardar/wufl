@@ -1,0 +1,1 @@
+document.getElementById("openled").onclick=com.openled;
