@@ -1,0 +1,107 @@
+Restore Archived Project report for HELLO
+Fri Apr 06 21:27:33 2012
+Quartus II 64-Bit Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Fri Apr 06 21:27:33 2012 ;
+; Revision Name                   ; HELLO                                 ;
+; Top-level Entity Name           ; HELLO                                 ;
+; Family                          ; Cyclone IV E                          ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'E:/DB4CE15_A/NIOS/HELLO.qar' into the 'E:/DB4CE15_A/NIOS/HELLO_restored/' directory
+Info: Generated report 'HELLO.restore.rpt'
+Info: Evaluation of Tcl script c:/altera/11.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 213 megabytes
+    Info: Processing ended: Fri Apr 06 21:27:33 2012
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+
++--------------------------------------------------+
+; Files Restored                                   ;
++--------------------------------------------------+
+; File Name                                        ;
++--------------------------------------------------+
+; HELLO.bdf                                        ;
+; HELLO.qpf                                        ;
+; HELLO.qsf                                        ;
+; PLL.bsf                                          ;
+; PLL.ppf                                          ;
+; PLL.qip                                          ;
+; PLL.v                                            ;
+; PLL_bb.v                                         ;
+; cpu.ocp                                          ;
+; cpu.sdc                                          ;
+; cpu.v                                            ;
+; cpu_bht_ram.mif                                  ;
+; cpu_ic_tag_ram.mif                               ;
+; cpu_jtag_debug_module_sysclk.v                   ;
+; cpu_jtag_debug_module_tck.v                      ;
+; cpu_jtag_debug_module_wrapper.v                  ;
+; cpu_mult_cell.v                                  ;
+; cpu_oci_test_bench.v                             ;
+; cpu_ociram_default_contents.mif                  ;
+; cpu_rf_ram_a.mif                                 ;
+; cpu_rf_ram_b.mif                                 ;
+; cpu_test_bench.v                                 ;
+; epcs.v                                           ;
+; epcs_boot_rom_synth.hex                          ;
+; incremental_db/compiled_partitions/HELLO.db_info ;
+; jtag_uart.v                                      ;
+; kernel.qip                                       ;
+; kernel.sopc                                      ;
+; kernel.v                                         ;
+; osh.tcl                                          ;
+; sdram.v                                          ;
+; sopc_add_qip_file.tcl                            ;
+; sysid.v                                          ;
+; assignment_defaults.qdf                          ;
++--------------------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+

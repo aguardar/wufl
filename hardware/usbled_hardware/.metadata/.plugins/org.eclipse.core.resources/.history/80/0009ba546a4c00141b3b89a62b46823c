@@ -1,0 +1,227 @@
+/*
+                   _ooOoo_
+                  o8888888o
+                  88" . "88
+                  (| -_- |)
+                  O\  =  /O
+               ____/`---'\____
+             .'  \\|     |//  `.
+            /  \\|||  :  |||//  \
+           /  _||||| -:- |||||-  \
+           |   | \\\  -  /// |   |
+           | \_|  ''\---/''  |   |
+           \  .-\__  `-`  ___/-. /
+         ___`. .'  /--.--\  `. . __
+      ."" '<  `.___\_<|>_/___.'  >'"".
+     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+     \  \ `-.   \_ __\ /__ _/   .-` /  /
+======`-.____`-.___\_____/___.-`____.-'======
+                   `=---='
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         ·ð×æ±£ÓÓ       ÓÀÎÞBUG
+*/
+
+/*--------------------------------------------------------------------------------------
+ *  Include
+ *-------------------------------------------------------------------------------------*/ 
+#include "../inc/usb.h"
+#include "altera_avalon_pio_regs.h"
+#include "sys/alt_irq.h"
+#include <unistd.h>
+#include <stdio.h>
+
+/*--------------------------------------------------------------------------------------
+ *  Function
+ *-------------------------------------------------------------------------------------*/ 
+void write_command_to_usb(unsigned char command);
+void write_data_to_usb(unsigned char data);
+unsigned char read_data_from_usb(void);
+void delay(void);
+
+/*--------------------------------------------------------------------------------------
+ *  Variable
+ *-------------------------------------------------------------------------------------*/ 
+USB_T usb;
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  irq_usb
+ *  Description:  
+ * =====================================================================================
+ */
+void irq_usb(void)
+{
+	unsigned int i;
+	unsigned char interrupt_status,data_len;
+	//  static int times=0;
+
+	write_command_to_usb(GET_STATUS);
+
+	interrupt_status=read_data_from_usb();
+
+	switch(interrupt_status){
+		//Device
+		case INT_EP2_OUT:
+
+			write_command_to_usb(RD_USB_DATA);
+			data_len=read_data_from_usb();
+
+			for(i=0;i<data_len;i++)usb.receive_buffer[i]=read_data_from_usb();
+			usb.receive_buffer[i]='\0';
+
+			usb.receive_ok_flag=1;
+
+			break;
+
+		case INT_EP2_IN:
+			write_command_to_usb(UNLOCK_USB);
+			usb.send_ok_flag=1;
+			break;
+
+		default :break;
+
+	}
+
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(USB_NINT_BASE,0x00);
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  send_string_to_usb
+ *  Description:  
+ * =====================================================================================
+ */
+int send_string_to_usb(char *str,int str_len)
+{
+	int i;
+
+	write_command_to_usb(WR_USB_DATA7);
+	write_data_to_usb(str_len);
+
+	for(i=0;i<str_len;i++)write_data_to_usb(str[i]);
+
+	return 0;
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  initialize_usb
+ *  Description:  
+ * =====================================================================================
+ */
+int initialize_usb(void)
+{
+	PIO_USB_RD=1;
+	PIO_USB_WR=1;
+	PIO_USB_A0=1;
+	usb.receive_ok_flag=0;
+
+	// enable the io interrupt
+
+	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(USB_NINT_BASE,1);
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(USB_NINT_BASE,0);
+
+	alt_irq_register(USB_NINT_IRQ,NULL,irq_usb);
+
+
+	set_usb_mode(USB_DEVICE);
+
+	return 0;
+}
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  set_usb_mode
+ *  Description:  
+ * =====================================================================================
+ */
+int set_usb_mode(unsigned char type)
+{
+	write_command_to_usb(SET_USB_MODE);
+	write_data_to_usb(type);
+	read_data_from_usb();
+
+	if((read_data_from_usb())==0x51)return 0;
+	else return -1;
+
+}
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  write_command_to_usb
+ *  Description:  
+ * =====================================================================================
+ */
+void write_command_to_usb(unsigned char command)
+{
+	//A0
+	PIO_USB_A0=1;
+
+	//DB DIR output
+	PIO_USB_DB_DIR=0xff;
+
+	PIO_USB_DB=command;
+
+	PIO_USB_WR=0;
+	PIO_USB_WR=1;
+
+}
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  uart_send_byte
+ *  Description:  
+ * =====================================================================================
+ */
+void delay(void)
+{
+	int i;
+	for(i=0;i<1000;i++);
+}
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  write_data_to_usb
+ *  Description:  
+ * =====================================================================================
+ */
+void write_data_to_usb(unsigned char data)
+{
+	//A0
+	PIO_USB_A0=0;
+
+	//DB DIR output
+	PIO_USB_DB_DIR=0xff;
+
+	PIO_USB_DB=data;
+
+	usleep(20);
+	PIO_USB_WR=0;
+	delay();
+	usleep(20);
+	PIO_USB_WR=1;
+
+
+}
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  read_data_from_usb
+ *  Description:  
+ * =====================================================================================
+ */
+unsigned char read_data_from_usb(void)
+{
+	unsigned char data=0;
+
+	//A0
+	PIO_USB_A0=0;
+
+
+	//DB DIR output
+	PIO_USB_DB_DIR=0;
+
+
+	PIO_USB_RD=0;
+	delay();
+	data=PIO_USB_DB;
+	PIO_USB_RD=1;
+
+	return data;
+}
+

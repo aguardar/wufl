@@ -1,0 +1,17 @@
+# clk
+# cpu
+set_global_assignment -name SDC_FILE [file join $::quartus(qip_path) cpu.sdc]
+set_global_assignment -name SOURCE_FILE [file join $::quartus(qip_path) cpu.ocp]
+# sysid
+# sdram
+# epcs
+# jtag_uart
+# led
+# usb_db
+# usb_nint
+# usb_wr
+# usb_rd
+# usb_a0
+# null
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID E091535B9D2600000148DF062D46 
+ 

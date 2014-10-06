@@ -1,0 +1,103 @@
+Altera SOPC Builder Version 11.01 Build 208
+Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
+
+
+No .sopc_builder configuration file(!)
+# 2014.10.05 14:37:02 (*) mk_custom_sdk starting
+# 2014.10.05 14:37:02 (*) Reading project D:/usbled/HELLO/kernel.ptf.
+
+# 2014.10.05 14:37:02 (*) Finding all CPUs
+# 2014.10.05 14:37:02 (*) Finding all available components
+# 2014.10.05 14:37:02 (*) Reading D:/usbled/HELLO/.sopc_builder/install.ptf
+
+# 2014.10.05 14:37:02 (*) Found 63 components
+
+# 2014.10.05 14:37:03 (*) Finding all peripherals
+
+# 2014.10.05 14:37:03 (*) Finding software components
+
+# 2014.10.05 14:37:04 (*) (Legacy SDK Generation Skipped)
+# 2014.10.05 14:37:04 (*) (All TCL Script Generation Skipped)
+# 2014.10.05 14:37:04 (*) (No Libraries Built)
+# 2014.10.05 14:37:04 (*) (Contents Generation Skipped)
+# 2014.10.05 14:37:04 (*) mk_custom_sdk finishing
+
+# 2014.10.05 14:37:04 (*) Starting generation for system: kernel.
+
+.
+.
+.
+.
+.
+.
+.....
+
+# 2014.10.05 14:37:05 (*) Running Generator Program for cpu
+
+# 2014.10.05 14:37:07 (*) Starting Nios II generation
+# 2014.10.05 14:37:07 (*)   Checking for plaintext license.
+# 2014.10.05 14:37:08 (*)   Plaintext license not found.
+# 2014.10.05 14:37:08 (*)   Checking for encrypted license (non-evaluation).
+# 2014.10.05 14:37:08 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2014.10.05 14:37:08 (*)   Getting CPU configuration settings
+# 2014.10.05 14:37:08 (*)   Elaborating CPU configuration settings
+# 2014.10.05 14:37:08 (*)   Creating all objects for CPU
+
+# 2014.10.05 14:37:08 (*)     Testbench
+# 2014.10.05 14:37:09 (*)     Instruction decoding
+# 2014.10.05 14:37:09 (*)       Instruction fields
+# 2014.10.05 14:37:09 (*)       Instruction decodes
+# 2014.10.05 14:37:10 (*)       Signals for RTL simulation waveforms
+# 2014.10.05 14:37:10 (*)       Instruction controls
+# 2014.10.05 14:37:10 (*)     Pipeline frontend
+# 2014.10.05 14:37:10 (*)     Pipeline backend
+# 2014.10.05 14:37:14 (*)   Generating HDL from CPU objects
+# 2014.10.05 14:37:17 (*)   Creating encrypted HDL
+
+# 2014.10.05 14:37:19 (*) Done Nios II generation
+
+# 2014.10.05 14:37:19 (*) Running Generator Program for sysid
+
+# 2014.10.05 14:37:20 (*) Running Generator Program for sdram
+
+# 2014.10.05 14:37:22 (*) Running Generator Program for epcs
+
+# 2014.10.05 14:37:23 (*) Running Generator Program for jtag_uart
+
+# 2014.10.05 14:37:24 (*) Running Generator Program for led
+
+# 2014.10.05 14:37:26 (*) Running Generator Program for usb_db
+
+# 2014.10.05 14:37:27 (*) Running Generator Program for usb_nint
+
+# 2014.10.05 14:37:28 (*) Running Generator Program for usb_wr
+
+# 2014.10.05 14:37:29 (*) Running Generator Program for usb_rd
+
+# 2014.10.05 14:37:30 (*) Running Generator Program for usb_a0
+
+.
+
+# 2014.10.05 14:37:31 (*) Running Test Generator Program for sdram
+
+# 2014.10.05 14:37:32 (*) Making arbitration and system (top) modules.
+
+# 2014.10.05 14:37:38 (*) Generating Quartus symbol for top level: kernel
+
+# 2014.10.05 14:37:38 (*) Generating Symbol D:/usbled/HELLO/kernel.bsf
+
+# 2014.10.05 14:37:38 (*) Creating command-line system-generation script: D:/usbled/HELLO/kernel_generation_script
+
+# 2014.10.05 14:37:38 (*) Running setup for HDL simulator: modelsim
+
+
+# 2014.10.05 14:37:38 (*) Completed generation for system: kernel.
+# 2014.10.05 14:37:38 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+  SOPC Builder database : D:/usbled/HELLO/kernel.ptf 
+  System HDL Model : D:/usbled/HELLO/kernel.v 
+  System Generation Script : D:/usbled/HELLO/kernel_generation_script 
+
+# 2014.10.05 14:37:38 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+
+
+Press 'Exit' to exit.
